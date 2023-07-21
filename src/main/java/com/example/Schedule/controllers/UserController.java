@@ -29,6 +29,7 @@ public class UserController {
         return "login";
     }
 
+
     @GetMapping("/registration")
     public String registration() {
         return "registration";
@@ -42,7 +43,7 @@ public class UserController {
     @PostMapping("/registration")
     public String createUser(User user) {
         userService.createUser(user);
-        return "redirect:/login";
+        return "redirect:/";
     }
 
 }

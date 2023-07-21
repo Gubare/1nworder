@@ -35,6 +35,8 @@ public class SecurityConfig{
                                 .requestMatchers("/").permitAll()
                                 .requestMatchers("/login").permitAll()
                                 .requestMatchers("").permitAll()
+                                .requestMatchers("/word").permitAll()
+                                .requestMatchers("/result").permitAll()
                                 .requestMatchers("redirect:/").permitAll()
                                 .anyRequest().authenticated());
         http

@@ -22,19 +22,14 @@ public class User implements UserDetails {
     private String email;
     @Column(name = "social_network")
     private boolean social_network;
+    @Column(name = "difficult")
+    private String difficult;
     @Column(name = "password", length = 1000)
     private String password;
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "user")
-    private List<Comment> comment = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "user")
-    private List<Note> note = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "user")
-    private List<Notification> notification = new ArrayList<>();
-
 
     public boolean isAdmin(){return roles.contains(Role.ROLE_ADMIN);}
 
